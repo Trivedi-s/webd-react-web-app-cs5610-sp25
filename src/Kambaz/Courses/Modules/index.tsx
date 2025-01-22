@@ -1,7 +1,6 @@
 export default function Modules() {
     return (
       <div>
-        {/* Implement Collapse All button, View Progress button, etc. */}
         <button style={{ marginRight: "10px" }}>Collapse All</button>
         <button style={{ marginRight: "10px" }}>View Progress</button>
         <button style={{ marginRight: "10px" }}>Publish All</button>
