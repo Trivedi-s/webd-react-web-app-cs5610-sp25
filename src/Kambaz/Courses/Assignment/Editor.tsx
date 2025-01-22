@@ -75,39 +75,51 @@ export default function AssignmentEditor() {
           </tr>
           <tr>
             <td align="right" valign="top">
-              <label htmlFor="wd-assign-to">Assign To</label>
+              <label htmlFor="wd-assign-to">Assign</label>
             </td>
+            <td>Assign To</td>
+          </tr>
+          <tr>
+            <td></td>
             <td>
               <input id="wd-assign-to" value="Everyone" />
             </td>
           </tr>
           <tr>
-            <td align="right" valign="top">
+            <td ></td>
+            <td >
               <label htmlFor="wd-due-date">Due</label>
             </td>
+          </tr>
+          <tr>
+          <td></td>
             <td>
               <input type="date" id="wd-due-date"/>
             </td>
           </tr>
           <tr>
-            <td align="right" valign="top">
+            <td></td>
+            <td>
               <label htmlFor="wd-available-from">Available from</label>
             </td>
+            <td></td>
             <td>
-              <input type="date" id="wd-available-from" />
+              <label htmlFor="wd-available-until">Until</label>
             </td>
           </tr>
           <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-available-until">Until</label>
+            <td></td>
+            <td>
+              <input type="date" id="wd-available-from" />
             </td>
+            <td></td>
             <td>
               <input type="date" id="wd-available-until" />
             </td>
           </tr>
         </table>
         <hr />
-        <button style={{marginLeft: "120px", marginRight: "10px"}}>Cancel</button>
+        <button style={{marginLeft: "270px", marginRight: "10px"}}>Cancel</button>
         <button>Save</button>
       </div>
   );}  
