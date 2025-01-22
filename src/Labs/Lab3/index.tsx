@@ -1,9 +1,8 @@
-import Lab1 from "../Lab1";
-export default function Labs(){
-    return(
-        <div>
-            <h1>Labs</h1>
-            <Lab1 />
-        </div>
+function Lab3() {
+    return (
+     <div>
+      <h2>Lab 3</h2>
+     </div>
     );
-}
+   }
+   export default Lab3;

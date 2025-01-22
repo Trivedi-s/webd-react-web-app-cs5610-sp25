@@ -1,0 +1,109 @@
+export default function AssignmentEditor() {
+    return (
+      <div id="wd-assignments-editor" style={{marginLeft: "20px"}}>
+        <label htmlFor="wd-name"><b>Assignment Name</b></label><br />
+        <input id="wd-name" value="A1 - ENV + HTML" style={{marginTop: "10px"}}/><br /><br />
+        <textarea id="wd-description">
+          The assignment is available online Submit a link to the landing page of your Web application running on Netlify.
+        </textarea>
+        <br />
+        <table style={{marginTop: "10px"}}>
+          <tr>
+            <td align="right" valign="top" style={{marginLeft: "100px"}}>
+              <label htmlFor="wd-points">Points</label>
+            </td>
+            <td>
+              <input id="wd-points" value={100} />
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-assignment-group">Assignment Group</label>
+            </td>
+            <td>
+            <select id="wd-assignment-group">
+                <option>ASSIGNMENTS</option>
+                <option>QUIZZES</option>
+                <option>PROJECTS</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-display-grade">Display Grade as</label>
+            </td>
+            <td>
+              <select id="wd-assignment-grade">
+                <option>Percentage</option>
+                <option>Points</option>
+                <option>Grade</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-submission">Submission Type</label>
+            </td>
+            <td>
+              <select id="wd-submission">
+                <option>Online</option>
+                <option>Offline</option>
+              </select>
+              <div style={{ marginTop: "10px" }}>
+                <p style={{ marginRight: "5px" }}>Online Entry Options</p>
+                <label>
+                  <input type="checkbox" style={{ marginRight: "5px" }} /> Text Entry
+                </label>
+                <br />
+                <label>
+                  <input type="checkbox" style={{ marginRight: "5px" }} /> Website URL
+                </label>
+                <br />
+                <label>
+                  <input type="checkbox" style={{ marginRight: "5px" }} /> Media Recordings
+                </label>
+                <br />
+                <label>
+                  <input type="checkbox" style={{ marginRight: "5px" }} /> File Uploads
+                </label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-assign-to">Assign To</label>
+            </td>
+            <td>
+              <input id="wd-assign-to" value="Everyone" />
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-due-date">Due</label>
+            </td>
+            <td>
+              <input type="date" id="wd-due-date"/>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-available-from">Available from</label>
+            </td>
+            <td>
+              <input type="date" id="wd-available-from" />
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-available-until">Until</label>
+            </td>
+            <td>
+              <input type="date" id="wd-available-until" />
+            </td>
+          </tr>
+        </table>
+        <hr />
+        <button style={{marginLeft: "120px", marginRight: "10px"}}>Cancel</button>
+        <button>Save</button>
+      </div>
+  );}  
