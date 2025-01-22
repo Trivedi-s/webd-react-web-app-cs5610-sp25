@@ -14,21 +14,21 @@ export default function Assignments() {
               href="#/Kambaz/Courses/1234/Assignments/1">
               A1 - ENV + HTML
             </a>
-            <p>Multiple Modules | <b>Not Available until</b> May 6 at 12:00am |<br /> <b>Due</b> May 13 at 11:59pm | 100 pts</p>
+            <p>Multiple Modules | <strong>Not Available until</strong> May 6 at 12:00am |<br /> <strong>Due</strong> May 13 at 11:59pm | 100 pts</p>
           </li>
           <li className="wd-assignment-list-item">
             <a className="wd-assignment-link"
               href="#/Kambaz/Courses/1234/Assignments/2">
               A2 - CSS + BOOTSTRAP
             </a>
-            <p>Multiple Modules | <b>Not Available until</b> May 13 at 12:00am |<br /> <b>Due</b> May 20 at 11:59pm | 100 pts</p>
+            <p>Multiple Modules | <strong>Not Available until</strong> May 13 at 12:00am |<br /> <strong>Due</strong> May 20 at 11:59pm | 100 pts</p>
           </li>
           <li className="wd-assignment-list-item">
             <a className="wd-assignment-link"
               href="#/Kambaz/Courses/1234/Assignments/3">
               A3 - JAVASCRIPT + REACT
             </a>
-            <p>Multiple Modules | <b>Not Available until</b> May 20 at 12:00am |<br /> <b>Due</b> May 27 at 11:59pm | 100 pts</p>
+            <p>Multiple Modules | <strong>Not Available until</strong> May 20 at 12:00am |<br /> <strong>Due</strong> May 27 at 11:59pm | 100 pts</p>
           </li>
         </ul>
       </div>
