@@ -36,7 +36,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="wd-dashboard-course">
-          <img src="/images/react.png" width={200} />
+          <img src="/images/pdp.png" width={200} />
           <div>
             <Link className="wd-dashboard-course-link"
                   to="/Kambaz/Courses/5010/Home"> CS 5010 Programming Design Paradigm </Link>
@@ -46,7 +46,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="wd-dashboard-course">
-          <img src="/images/react.png" width={200} />
+          <img src="/images/FAI.jpeg" width={200} />
           <div>
             <Link className="wd-dashboard-course-link"
                   to="/Kambaz/Courses/5100/Home"> CS 5100 Foundations of Artificial Intelligence </Link>
@@ -56,7 +56,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="wd-dashboard-course">
-          <img src="/images/react.png" width={200} />
+          <img src="/images/DBMS.jpeg" width={200} />
           <div>
             <Link className="wd-dashboard-course-link"
                   to="/Kambaz/Courses/5200/Home"> CS 5200 Database Management SystemsS </Link>
@@ -66,7 +66,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="wd-dashboard-course">
-          <img src="/images/react.png" width={200} />
+          <img src="/images/Pattern Recognition.jpeg" width={200} />
           <div>
             <Link className="wd-dashboard-course-link"
                   to="/Kambaz/Courses/5330/Home"> CS 5330 Pattern Recognition and Computer Vision </Link>
@@ -76,7 +76,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="wd-dashboard-course">
-          <img src="/images/react.png" width={200} />
+          <img src="/images/algo.jpeg" width={200} />
           <div>
             <Link className="wd-dashboard-course-link"
                   to="/Kambaz/Courses/5800/Home"> CS 5800 Algorithms </Link>
@@ -86,7 +86,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="wd-dashboard-course">
-          <img src="/images/react.png" width={200} />
+          <img src="/images/NLP.jpeg" width={200} />
           <div>
             <Link className="wd-dashboard-course-link"
                   to="/Kambaz/Courses/6120/Home"> CS 6120 Natural Language Processing </Link>

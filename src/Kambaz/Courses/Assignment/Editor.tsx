@@ -18,10 +18,10 @@ export default function AssignmentEditor() {
           </tr>
           <tr>
             <td align="right" valign="top">
-              <label htmlFor="wd-assignment-group">Assignment Group</label>
+              <label htmlFor="wd-group">Assignment Group</label>
             </td>
             <td>
-            <select id="wd-assignment-group">
+            <select id="wd-group">
                 <option>ASSIGNMENTS</option>
                 <option>QUIZZES</option>
                 <option>PROJECTS</option>
@@ -30,10 +30,10 @@ export default function AssignmentEditor() {
           </tr>
           <tr>
             <td align="right" valign="top">
-              <label htmlFor="wd-display-grade">Display Grade as</label>
+              <label htmlFor="wd-display-grade-as">Display Grade as</label>
             </td>
             <td>
-              <select id="wd-assignment-grade">
+              <select id="wd-display-grade-as">
                 <option>Percentage</option>
                 <option>Points</option>
                 <option>Grade</option>
@@ -42,29 +42,33 @@ export default function AssignmentEditor() {
           </tr>
           <tr>
             <td align="right" valign="top">
-              <label htmlFor="wd-submission">Submission Type</label>
+              <label htmlFor="wd-submission-type">Submission Type</label>
             </td>
             <td>
-              <select id="wd-submission">
+              <select id="wd-submission-type">
                 <option>Online</option>
                 <option>Offline</option>
               </select>
               <div style={{ marginTop: "10px" }}>
                 <p style={{ marginRight: "5px" }}>Online Entry Options</p>
-                <label>
-                  <input type="checkbox" style={{ marginRight: "5px" }} /> Text Entry
+                <label htmlFor="wd-text-entry">
+                  <input id="wd-text-entry" type="checkbox" style={{ marginRight: "5px" }} /> Text Entry
                 </label>
                 <br />
-                <label>
-                  <input type="checkbox" style={{ marginRight: "5px" }} /> Website URL
+                <label htmlFor="wd-website-url">
+                  <input id="wd-website-url" type="checkbox" style={{ marginRight: "5px" }} /> Website URL
                 </label>
                 <br />
-                <label>
-                  <input type="checkbox" style={{ marginRight: "5px" }} /> Media Recordings
+                <label htmlFor="wd-media-recordings">
+                  <input id="wd-media-recordings" type="checkbox" style={{ marginRight: "5px" }} /> Media Recordings
                 </label>
                 <br />
-                <label>
-                  <input type="checkbox" style={{ marginRight: "5px" }} /> File Uploads
+                <label htmlFor="wd-student-annotation">
+                  <input id="wd-student-annotation" type="checkbox" style={{ marginRight: "5px" }} /> Student Annotation
+                </label>
+                <br />
+                <label htmlFor="wd-file-upload">
+                  <input id="wd-file-upload" type="checkbox" style={{ marginRight: "5px" }} /> File Uploads
                 </label>
               </div>
             </td>
