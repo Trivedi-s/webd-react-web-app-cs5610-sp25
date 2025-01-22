@@ -3,13 +3,15 @@ export default function CoursesNavigation() {
     const { cid } = useParams<{ cid: string }>();
   return (
     <div id="wd-courses-navigation">
-      <Link to={`/Kambaz/Courses/${cid}/Home`}>Home</Link><br/>
-      <Link to={`/Kambaz/Courses/${cid}/Modules`}>Modules</Link><br/>
-      <Link to={`/Kambaz/Courses/${cid}/Piazza`}>Piazza</Link><br/>
-      <Link to={`/Kambaz/Courses/${cid}/Zoom`}>Zoom</Link><br/>
-      <Link to={`/Kambaz/Courses/${cid}/Assignments`}>Assignments</Link><br/>
-      <Link to={`/Kambaz/Courses/${cid}/Quizzes`}>Quizzes</Link><br/>
-      <Link to={`/Kambaz/Courses/${cid}/Grades`}>Grades</Link><br/>
-      <Link to={`/Kambaz/Courses/${cid}/People`}>People</Link><br/>
+      <ul>
+        <li><Link to={`/Kambaz/Courses/${cid}/Home`}>Home</Link></li>
+        <li><Link to={`/Kambaz/Courses/${cid}/Modules`}>Modules</Link></li>
+        <li><Link to={`/Kambaz/Courses/${cid}/Piazza`}>Piazza</Link></li>
+        <li><Link to={`/Kambaz/Courses/${cid}/Zoom`}>Zoom</Link></li>
+        <li><Link to={`/Kambaz/Courses/${cid}/Assignments`}>Assignments</Link></li>
+        <li><Link to={`/Kambaz/Courses/${cid}/Quizzes`}>Quizzes</Link></li>
+        <li><Link to={`/Kambaz/Courses/${cid}/Grades`}>Grades</Link></li>
+        <li><Link to={`/Kambaz/Courses/${cid}/People`}>People</Link></li>
+      </ul>
     </div>
 );}
