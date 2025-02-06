@@ -4,11 +4,6 @@ export default function Signup() {
   return (
     <div id="wd-signup-screen" style={{paddingLeft: "30px"}}>
       <h3>Signup</h3>
-      {/* <input placeholder="username" /><br/>
-      <input placeholder="password" type="password" /><br/>
-      <input placeholder="verify password" type="password" /><br/>
-      <Link to="/Kambaz/Account/Profile" > Sign up </Link><br />
-      <Link to="/Kambaz/Account/Signin" >Sign in</Link> */}
 
       <Form.Control id="wd-username"
              placeholder="username"

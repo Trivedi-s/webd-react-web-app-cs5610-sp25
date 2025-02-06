@@ -1,10 +1,8 @@
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline, IoSettingsOutline } from "react-icons/io5";
-import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
-import { FaInbox, FaRegCircleUser, FaRegClock } from "react-icons/fa6";
+import { LiaBookSolid} from "react-icons/lia";
+import { FaInbox, FaRegCircleUser} from "react-icons/fa6";
 import { Link } from "react-router";
-import { MdOutlineSmartDisplay} from "react-icons/md";
-import { BsQuestionCircle } from "react-icons/bs";
 export default function KambazNavigation() {
     return (
         <div id="wd-kambaz-navigation" style={{ width: 120 }} 
