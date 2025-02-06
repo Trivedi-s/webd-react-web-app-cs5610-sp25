@@ -1,11 +1,22 @@
+import Nav from "react-bootstrap/Nav";
 export default function TOC() {
-  return (
-    <ul>
-      <li><a id="wd-a1" href="#/Labs/Lab1">Lab 1</a></li>
-      <li><a id="wd-a2" href="#/Labs/Lab2">Lab 2</a></li>
-      <li><a id="wd-a3" href="#/Labs/Lab3">Lab 3</a></li>
-      <li><a id="wd-k"  href="#/Kambaz">Kambaz</a></li>
-      <li><a id="github-link" href="https://github.com/Trivedi-s/webd-react-web-app-cs5610-sp25/tree/a1" target="_blank">Github repo</a></li>
-    </ul>
-  );
-}
+     return (
+        <Nav variant="pills"> <Nav.Item> 
+            <Nav.Link href="#/Labs">Default Lab</Nav.Link> 
+            </Nav.Item> 
+            <Nav.Item> 
+                <Nav.Link href="#/Labs/Lab1">Lab 1</Nav.Link>
+                </Nav.Item> 
+                <Nav.Item> 
+                    <Nav.Link href="#/Labs/Lab2">Lab 2</Nav.Link> 
+                    </Nav.Item> <Nav.Item> 
+                        <Nav.Link href="#/Labs/Lab3">Lab 3</Nav.Link> 
+                        </Nav.Item> <Nav.Item> 
+                            <Nav.Link href="#/Kambaz">Kambaz</Nav.Link> 
+                            </Nav.Item> <Nav.Item> 
+                                <Nav.Link href="https://github.com/Trivedi-s/webd-react-web-app-cs5610-sp25/tree/a1" 
+          id="wd-github"
+          target="_blank"
+          rel="noopener noreferrer">My GitHub</Nav.Link> 
+                                </Nav.Item> </Nav> 
+            );}
