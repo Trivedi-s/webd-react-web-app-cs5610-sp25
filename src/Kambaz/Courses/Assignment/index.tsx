@@ -60,7 +60,7 @@ export default function Assignments() {
                   href="#/Kambaz/Courses/1234/Assignments/123"
                   className="wd-assignment-link text-black text-decoration-none"
                 >
-                  A1
+                  <strong>A1</strong>
                 </a>
                 <p className="wd-assignment-details mb-0">
                   <span className="text-danger"> Multiple Modules</span> |{" "}
@@ -81,7 +81,7 @@ export default function Assignments() {
                   href="#/Kambaz/Courses/1234/Assignments/123"
                   className="wd-assignment-link text-black text-decoration-none"
                 >
-                  A2
+                  <strong>A2</strong>
                 </a>
                 <p className="wd-assignmet-details">
                   <span className="text-danger"> Multiple Modules</span> |{" "}
@@ -102,7 +102,7 @@ export default function Assignments() {
                   href="#/Kambaz/Courses/1234/Assignments/123"
                   className="wd-assignment-link text-black text-decoration-none"
                 >
-                  A3
+                  <strong>A3</strong>
                 </a>
                 <p className="wd-assignmet-details">
                   <span className="text-danger"> Multiple Modules</span> |{" "}

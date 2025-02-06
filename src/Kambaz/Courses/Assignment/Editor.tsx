@@ -98,31 +98,31 @@ export default function AssignmentEditor() {
                             id="wd-text-entry"
                             type="checkbox"
                             label="Text Entry"
-                            style={{ marginRight: "5px" }}
+                            style={{ marginRight: "5px", marginTop:"5px" }}
                           />
                           <Form.Check 
                             id="wd-website-url"
                             type="checkbox"
                             label="Website URL"
-                            style={{ marginRight: "5px" }}
+                            style={{ marginRight: "5px", marginTop:"5px" }}
                           />
                           <Form.Check 
                             id="wd-media-recordings"
                             type="checkbox"
                             label="Media Recordings"
-                            style={{ marginRight: "5px" }}
+                            style={{ marginRight: "5px", marginTop:"5px" }}
                           />
                           <Form.Check 
                             id="wd-student-annotation"
                             type="checkbox"
                             label="Student Annotation"
-                            style={{ marginRight: "5px" }}
+                            style={{ marginRight: "5px", marginTop:"5px" }}
                           />
                           <Form.Check 
                             id="wd-file-upload"
                             type="checkbox"
                             label="File Uploads"
-                            style={{ marginRight: "5px" }}
+                            style={{ marginRight: "5px", marginTop:"5px" }}
                           />
                         </div>
                       </td>
