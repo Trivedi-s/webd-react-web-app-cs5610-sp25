@@ -1,8 +1,7 @@
-import { Form, Button, Row, Col, Table, InputGroup } from "react-bootstrap";
+import { Form, Button, Row, Col, Table } from "react-bootstrap";
 import { RxCross1 } from "react-icons/rx";
 import { useNavigate, useParams } from "react-router-dom";
 import * as db from "../../Database";
-import { LuCalendarDays } from "react-icons/lu";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -19,7 +18,7 @@ export default function AssignmentEditor() {
           <Form>
             <Form.Group controlId="wd-name">
               <Form.Label>Assignment Name</Form.Label>
-              <Form.Control type="text" defaultValue={assignment?.title || ""} />
+              <Form.Control type="text" defaultValue={assignment?._id || ""} />
             </Form.Group>
 
             <div className="border w-100 p-2 rounded float-end mb-3 mt-3" style={{borderColor:"#dee2e6"}}>
@@ -168,13 +167,7 @@ export default function AssignmentEditor() {
                   <Col>
                     <Form.Group controlId="wd-due-date">
                       <Form.Label><strong>Due </strong></Form.Label>
-                      {/* <Form.Control type="text" defaultValue={assignment?.editorDueDate || ""} /> */}
-                      <InputGroup>
-                        <Form.Control type="text" defaultValue={assignment?.editorDueDate || ""} />
-                        <InputGroup.Text className="bg-white border-start-0" style={{ justifyContent: "center" }}>
-                          <LuCalendarDays size={20} />
-                        </InputGroup.Text>
-                      </InputGroup>
+                      <Form.Control type="date" defaultValue={assignment?.editorDueDate || ""} />
                     </Form.Group>
                   </Col>
                 </Row>
@@ -182,25 +175,25 @@ export default function AssignmentEditor() {
                   <Col sm={6}>
                     <Form.Group controlId="wd-available-from">
                       <Form.Label><strong>Available From</strong></Form.Label>
-                      {/* <Form.Control type="text" defaultValue={assignment?.editorAvailableFrom || ""} /> */}
-                      <InputGroup>
-                        <Form.Control type="text" defaultValue={assignment?.editorAvailableFrom || ""} />
+                      <Form.Control type="date" defaultValue={assignment?.editorAvailableFrom || ""} />
+                      {/* <InputGroup>
+                        <Form.Control type="date" defaultValue={assignment?.editorAvailableFrom || ""} />
                         <InputGroup.Text className="bg-white border-start-0" style={{ justifyContent: "center" }}>
                           <LuCalendarDays size={20} />
                         </InputGroup.Text>
-                      </InputGroup>
+                      </InputGroup> */}
                     </Form.Group>
                   </Col>
                   <Col sm={6}>
                     <Form.Group controlId="wd-available-until">
                       <Form.Label><strong>Until</strong></Form.Label>
-                      {/* <Form.Control type="text" defaultValue={assignment?.editorDueDate || ""} /> */}
-                      <InputGroup>
-                        <Form.Control type="text" defaultValue={assignment?.editorDueDate || ""} />
+                      <Form.Control type="date" defaultValue={assignment?.editorDueDate || ""} />
+                      {/* <InputGroup>
+                        <Form.Control type="date" defaultValue={assignment?.editorDueDate || ""} />
                         <InputGroup.Text className="bg-white border-start-0" style={{ justifyContent: "center" }}>
                           <LuCalendarDays size={20} />
                         </InputGroup.Text>
-                      </InputGroup>
+                      </InputGroup> */}
                     </Form.Group>
                   </Col>
                 </Row>
@@ -210,11 +203,11 @@ export default function AssignmentEditor() {
             <hr />
             <Row className="mt-4">
               <Col className="d-flex justify-content-end">
-                <Button variant="secondary" id="wd-button-save" className="me-3" onClick={handleNavigation}>
-                  Save
-                </Button>
-                <Button variant="danger" id="wd-button-cancel" onClick={handleNavigation}> 
+                <Button variant="secondary" id="wd-button-cancel" className="me-3" onClick={handleNavigation}> 
                   Cancel
+                </Button>
+                <Button variant="danger" id="wd-button-save" onClick={handleNavigation}>
+                  Save
                 </Button>
               </Col>
             </Row>
