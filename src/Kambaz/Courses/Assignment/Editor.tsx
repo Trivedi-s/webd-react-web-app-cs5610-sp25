@@ -176,24 +176,12 @@ export default function AssignmentEditor() {
                     <Form.Group controlId="wd-available-from">
                       <Form.Label><strong>Available From</strong></Form.Label>
                       <Form.Control type="date" defaultValue={assignment?.editorAvailableFrom || ""} />
-                      {/* <InputGroup>
-                        <Form.Control type="date" defaultValue={assignment?.editorAvailableFrom || ""} />
-                        <InputGroup.Text className="bg-white border-start-0" style={{ justifyContent: "center" }}>
-                          <LuCalendarDays size={20} />
-                        </InputGroup.Text>
-                      </InputGroup> */}
                     </Form.Group>
                   </Col>
                   <Col sm={6}>
                     <Form.Group controlId="wd-available-until">
                       <Form.Label><strong>Until</strong></Form.Label>
                       <Form.Control type="date" defaultValue={assignment?.editorDueDate || ""} />
-                      {/* <InputGroup>
-                        <Form.Control type="date" defaultValue={assignment?.editorDueDate || ""} />
-                        <InputGroup.Text className="bg-white border-start-0" style={{ justifyContent: "center" }}>
-                          <LuCalendarDays size={20} />
-                        </InputGroup.Text>
-                      </InputGroup> */}
                     </Form.Group>
                   </Col>
                 </Row>
