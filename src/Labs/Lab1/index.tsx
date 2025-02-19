@@ -1,7 +1,6 @@
 export default function Lab1() {
     return (
         <div id="wd-lab1">
-            <h2>Shloka Shreyans Trivedi <br />Section: 01</h2>
             <h2>Lab 1: Building React User Interfaces with HTML, Assignment 1, Setting Up the Development Environment, Introduction to HTML</h2>
             <h3>HTML Examples</h3> 
 
