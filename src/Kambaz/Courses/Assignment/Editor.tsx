@@ -1,6 +1,17 @@
-import { Form, Button, Row, Col, Table } from "react-bootstrap";
+import { Form, Button, Row, Col, Table, InputGroup } from "react-bootstrap";
 import { RxCross1 } from "react-icons/rx";
+import { useNavigate, useParams } from "react-router-dom";
+import * as db from "../../Database";
+import { LuCalendarDays } from "react-icons/lu";
+
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();
+  //const courseAssignments = db.assignments.filter((assignment) => assignment.course === cid);
+  const assignment = db.assignments.find((a) => a._id === aid);
+  const navigate = useNavigate();
+  const handleNavigation = () => {
+    navigate(`/Kambaz/Courses/${cid}/Assignments`);
+  };
   return (
     <div id="wd-assignments-editor">
       <Row>
@@ -8,7 +19,7 @@ export default function AssignmentEditor() {
           <Form>
             <Form.Group controlId="wd-name">
               <Form.Label>Assignment Name</Form.Label>
-              <Form.Control type="text" defaultValue="A1" />
+              <Form.Control type="text" defaultValue={assignment?.title || ""} />
             </Form.Group>
 
             <div className="border w-100 p-2 rounded float-end mb-3 mt-3" style={{borderColor:"#dee2e6"}}>
@@ -33,7 +44,7 @@ export default function AssignmentEditor() {
                 <Form.Label>Points</Form.Label>
               </Col>
               <Col sm={5}>
-                <Form.Control type="number" defaultValue={100} />
+                <Form.Control type="number" defaultValue={assignment?.points || ""} />
               </Col>
             </Row>
 
@@ -157,7 +168,13 @@ export default function AssignmentEditor() {
                   <Col>
                     <Form.Group controlId="wd-due-date">
                       <Form.Label><strong>Due </strong></Form.Label>
-                      <Form.Control type="datetime-local" defaultValue="2022-05-13T12:30" />
+                      {/* <Form.Control type="text" defaultValue={assignment?.editorDueDate || ""} /> */}
+                      <InputGroup>
+                        <Form.Control type="text" defaultValue={assignment?.editorDueDate || ""} />
+                        <InputGroup.Text className="bg-white border-start-0" style={{ justifyContent: "center" }}>
+                          <LuCalendarDays size={20} />
+                        </InputGroup.Text>
+                      </InputGroup>
                     </Form.Group>
                   </Col>
                 </Row>
@@ -165,13 +182,25 @@ export default function AssignmentEditor() {
                   <Col sm={6}>
                     <Form.Group controlId="wd-available-from">
                       <Form.Label><strong>Available From</strong></Form.Label>
-                      <Form.Control type="datetime-local" defaultValue="2022-05-13T12:30" />
+                      {/* <Form.Control type="text" defaultValue={assignment?.editorAvailableFrom || ""} /> */}
+                      <InputGroup>
+                        <Form.Control type="text" defaultValue={assignment?.editorAvailableFrom || ""} />
+                        <InputGroup.Text className="bg-white border-start-0" style={{ justifyContent: "center" }}>
+                          <LuCalendarDays size={20} />
+                        </InputGroup.Text>
+                      </InputGroup>
                     </Form.Group>
                   </Col>
                   <Col sm={6}>
                     <Form.Group controlId="wd-available-until">
                       <Form.Label><strong>Until</strong></Form.Label>
-                      <Form.Control type="datetime-local" defaultValue="2022-05-13T12:30" />
+                      {/* <Form.Control type="text" defaultValue={assignment?.editorDueDate || ""} /> */}
+                      <InputGroup>
+                        <Form.Control type="text" defaultValue={assignment?.editorDueDate || ""} />
+                        <InputGroup.Text className="bg-white border-start-0" style={{ justifyContent: "center" }}>
+                          <LuCalendarDays size={20} />
+                        </InputGroup.Text>
+                      </InputGroup>
                     </Form.Group>
                   </Col>
                 </Row>
@@ -181,10 +210,10 @@ export default function AssignmentEditor() {
             <hr />
             <Row className="mt-4">
               <Col className="d-flex justify-content-end">
-                <Button variant="secondary" id="wd-button-save" className="me-3">
+                <Button variant="secondary" id="wd-button-save" className="me-3" onClick={handleNavigation}>
                   Save
                 </Button>
-                <Button variant="danger" id="wd-button-cancel">
+                <Button variant="danger" id="wd-button-cancel" onClick={handleNavigation}> 
                   Cancel
                 </Button>
               </Col>

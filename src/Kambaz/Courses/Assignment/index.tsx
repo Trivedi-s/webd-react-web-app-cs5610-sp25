@@ -6,11 +6,13 @@ import { IoEllipsisVerticalOutline } from "react-icons/io5";
 import { IoAddSharp } from "react-icons/io5";
 import AssignmentControll from "./AssignmentControlRight";
 import AssignmentControll1 from "./AssignmentControlLeft";
-
+import * as db from "../../Database";
+import { Link, useParams } from "react-router";
 
 export default function Assignments() {
+  const { cid } = useParams();
+  const courseAssignments = db.assignments.filter((assignment) => assignment.course === cid);
     return (
-
       <div id="wd-assignments">
         <div className="row justify-content-between">
           <div className="position-relative col-md-8">
@@ -52,69 +54,37 @@ export default function Assignments() {
               </div>
             </div>
           </ListGroup.Item>
-          <ListGroup.Item className="d-flex justify-content-between align-items-center p-3 wd-lesson">
-            <div className="d-flex align-items-center">
-              <AssignmentControll1 />
-              <div className="ms-3">
-                <a
-                  href="#/Kambaz/Courses/1234/Assignments/123"
-                  className="wd-assignment-link text-black text-decoration-none"
-                >
-                  <strong>A1</strong>
-                </a>
-                <p className="wd-assignment-details mb-0">
-                  <span className="text-danger"> Multiple Modules</span> |{" "}
-                  <b>Not Available until</b> May 6 at 12:00 am |
-                  <br />
-                  <b>Due </b>May 13 at 11:59 pm | 100 pts
-                </p>
-              </div>
-            </div>
-            <AssignmentControll />
-          </ListGroup.Item>
 
-          <ListGroup.Item className="d-flex justify-content-between align-items-center p-3 wd-lesson">
-            <div className="d-flex align-items-center">
-              <AssignmentControll1 />
-              <div className="ms-3">
-                <a
-                  href="#/Kambaz/Courses/1234/Assignments/123"
-                  className="wd-assignment-link text-black text-decoration-none"
-                >
-                  <strong>A2</strong>
-                </a>
-                <p className="wd-assignmet-details">
-                  <span className="text-danger"> Multiple Modules</span> |{" "}
-                  <b>Not Available unitl</b> May 13 at 12:00 am|
-                  <br />
-                  <b>Due </b>May 20 at 11:59 pm| 100 pts
-                </p>
-              </div>
+          {courseAssignments.length > 0 && (
+            <div>
+              {courseAssignments.map((assignment) => (
+                <ListGroup.Item className="d-flex justify-content-between align-items-center p-3 wd-lesson">
+                    <div className="d-flex align-items-center">
+                      <AssignmentControll1 />
+                        <div className="mt-3">
+                            <div key={assignment._id} className="ms-3 assignment-item">
+                            <Link
+                              to={`/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}
+                              className="wd-assignment-link text-black text-decoration-none"
+                            >
+                              <strong>{assignment._id}</strong>
+                            </Link>
+                            <p className="wd-assignment-details mb-0">
+                              <span className="text-danger">{assignment.title}</span> |{" "}
+                              <b>Not Available until</b> {assignment.availableFrom} |
+                              <br />
+                              <b>Due </b>{assignment.dueDate} | {assignment.points} pts
+                            </p>
+                          </div>
+                        </div>
+                    </div>
+                    <AssignmentControll />
+                </ListGroup.Item>
+              ))}
             </div>
-            <AssignmentControll />
-          </ListGroup.Item>
-
-          <ListGroup.Item className="d-flex justify-content-between align-items-center p-3 wd-lesson">
-            <div className="d-flex align-items-center">
-              <AssignmentControll1 />
-              <div className="ms-3">
-                <a
-                  href="#/Kambaz/Courses/1234/Assignments/123"
-                  className="wd-assignment-link text-black text-decoration-none"
-                >
-                  <strong>A3</strong>
-                </a>
-                <p className="wd-assignmet-details">
-                  <span className="text-danger"> Multiple Modules</span> |{" "}
-                  <b>Not Available unitl</b> May 20 at 12:00 am|
-                  <br />
-                  <b>Due </b>May 27 at 11:59 pm| 100 pts
-                </p>
-              </div>
-            </div>
-            <AssignmentControll />
-          </ListGroup.Item>
+          )}
         </ListGroup>
+
       </div>
     </div>
   );
