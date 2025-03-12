@@ -12,6 +12,7 @@ import { FaAlignJustify } from "react-icons/fa6";
 import PeopleTable from "./People/Table";
 // import { courses } from "../Database";
 import Settings from "./Settings";
+import AssignmentEditorViewOnly from "./Assignment/AssignmentEditorViewOnly";
 export default function Courses({ courses }: { courses: any[]; }) {
     const { cid } = useParams();
     const course = courses.find((course) => course._id === cid);
@@ -37,6 +38,7 @@ export default function Courses({ courses }: { courses: any[]; }) {
                 <Route path="Zoom" element={<Zoom/>} />
                 <Route path="Assignments" element={<Assignments />} />
                 <Route path="Assignments/:aid" element={<AssignmentEditor />} />
+                <Route path="Assignments/:aid/AssignmentEditorViewOnly" element={<AssignmentEditorViewOnly />} />
                 <Route path="Quizzes" element={<Quizzes />} />
                 <Route path="Grades" element={<Grades />} />
                 <Route path="People" element={<PeopleTable />} />

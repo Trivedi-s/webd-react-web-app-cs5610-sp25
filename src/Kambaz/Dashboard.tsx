@@ -19,15 +19,16 @@ export default function Dashboard() {
     description: "New Description",
     image: "images/react.png",
   };
+  const isAdminOrFaculty = currentUser.role === "FACULTY" || currentUser.role === "ADMIN";
   const [course, setCourse] = useState(newCourse);
   const [showAll, setShowAll] = useState(false);
   const dispatch = useDispatch();
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard
-        {currentUser.role !== "FACULTY" && <Button className="float-end" onClick={() => setShowAll(!showAll)}>Enrollments</Button>}</h1>
+        {!isAdminOrFaculty && <Button className="float-end" onClick={() => setShowAll(!showAll)}>Enrollments</Button>}</h1>
       <hr />
-      {currentUser.role === "FACULTY" && (
+      {isAdminOrFaculty && (
         <>
           <h5>New Course
             <button className="btn btn-primary float-end"
@@ -94,7 +95,7 @@ export default function Dashboard() {
                       <p className="wd-dashboard-course-title card-text overflow-y-hidden" style={{ maxHeight: 50 }}>
                         {course.description} </p>
                       <button className="btn btn-primary wd-go-button"> Go </button>
-                      {currentUser.role === "FACULTY" &&
+                      {isAdminOrFaculty &&
                         <>
                           <Button onClick={(event) => {
                             event.preventDefault();
@@ -112,7 +113,7 @@ export default function Dashboard() {
                             Edit
                           </Button>
                         </>}
-                      {currentUser.role !== "FACULTY" && (
+                      {!isAdminOrFaculty && (
                         enrollments.some((enrollment: any) => enrollment.user === currentUser._id && enrollment.course === course._id) ?
                           <Button className="btn btn-danger wd-card-delete-button" onClick={(e) => {
                             e.preventDefault();

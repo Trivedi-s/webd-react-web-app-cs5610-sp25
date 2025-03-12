@@ -4,12 +4,15 @@ import { FaPencil } from "react-icons/fa6";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "../Modules/GreenCheckmark";
 import { useNavigate, useParams } from "react-router";
+import { useSelector } from "react-redux";
 
 export default function AssignmentControlButtons(
   { assignmentId, deleteAssignment, editAssignment }: { assignmentId: string; deleteAssignment: (assignmentId: string) => void; editAssignment: (assignmentId: string) => void }
 ) {
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { cid } = useParams();
   const navigate = useNavigate();
+  const isAdminOrFaculty = currentUser.role === "FACULTY" || currentUser.role === "ADMIN";
   const handleEditAssignment: any = (assignmentId: string) => {
     editAssignment(assignmentId);
     navigate(`/Kambaz/Courses/${cid}/Assignments/${assignmentId}`);
@@ -22,8 +25,12 @@ export default function AssignmentControlButtons(
 
   return (
     <div className="float-end d-flex align-items-center gap-2">
-      <FaPencil onClick={() => handleEditAssignment(assignmentId)} className="text-primary me-3" />
-      <FaTrash className="text-danger me-2 mb-1" onClick={() => handleDeleteAssignment(assignmentId)} />
+      {isAdminOrFaculty && (
+        <>
+          <FaPencil onClick={() => handleEditAssignment(assignmentId)} className="text-primary me-3" />
+          <FaTrash className="text-danger me-2 mb-1" onClick={() => handleDeleteAssignment(assignmentId)} />
+        </>
+      )}
       <GreenCheckmark />
       <IoEllipsisVertical className="fs-4" />
       <BsPlus className="fs-4" />

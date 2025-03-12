@@ -84,7 +84,7 @@ export default function Assignments() {
                   <div className="mt-3">
                     <div key={assignment._id} className="ms-3 assignment-item">
                       <Link
-                        to={`/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}
+                        to={`/Kambaz/Courses/${cid}/Assignments/${assignment._id}/AssignmentEditorViewOnly`}
                         className="wd-assignment-link text-black text-decoration-none"
                       >
                         <strong>{assignment._id}</strong>

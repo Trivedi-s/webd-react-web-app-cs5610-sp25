@@ -11,6 +11,7 @@ const assignmentsSlice = createSlice({
     addAssignment: (state, { payload: assignment }) => {
         const newAssignment: any = {
           _id: uuidv4(),
+          description: assignment.description,
           title: assignment.title,
           course: assignment.course,
           dueDate: assignment.dueDate,

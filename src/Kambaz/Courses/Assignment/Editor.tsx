@@ -214,6 +214,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as db from "../../Database";
 import { addAssignment, updateAssignment } from "./AssignmentReducer";
+// import { de } from "date-fns/locale";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -222,6 +223,7 @@ export default function AssignmentEditor() {
 
   const assignment = db.assignments.find((a) => a._id === aid);
 
+  const [description, setDescription] = useState(assignment?.description || "");
   const [title, setTitle] = useState(assignment?.title || "");
   const [dueDate, setDueDate] = useState(assignment?.dueDate || "");
   const [points, setPoints] = useState(assignment?.points || "");
@@ -233,6 +235,7 @@ export default function AssignmentEditor() {
     if (!aid) {
       // Add new assignment
       dispatch(addAssignment({
+        description,
         title,
         course: cid,
         dueDate,
@@ -244,6 +247,7 @@ export default function AssignmentEditor() {
       // Update existing assignment
       dispatch(updateAssignment({
         _id: aid,
+        description,
         title,
         course: cid,
         dueDate,
@@ -266,20 +270,10 @@ export default function AssignmentEditor() {
               <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
             </Form.Group>
 
-            <div className="border w-100 p-2 rounded float-end mb-3 mt-3" style={{borderColor:"#dee2e6"}}>
-              <p className="mt-3 mb-2">
-                The assignment is <span style={{color:"red"}}>available online.</span>
-              </p>
-              <p className="mb-2">Submit a link to the landing page of your Web application running on Netlify.</p>
-              <p className="mb-2">The landing page should include the following:</p>
-              <ul className="mb-2">
-              <li>Your full name and section</li>
-              <li>Links to each of the lab assignments</li>
-              <li>Link to the Kambaz application</li>
-              <li>Links to all relevant source code repositories</li>
-              </ul>
-              <p>The Kanbas application should include a link to navigate back to the landing page.</p>
-            </div>
+            <Form.Group controlId="wd-description">
+              <Form.Label>Description</Form.Label>
+              <Form.Control type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+            </Form.Group>
 
             <Row className="mt-3">
               <Col sm={6}>
