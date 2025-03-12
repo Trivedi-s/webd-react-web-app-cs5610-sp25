@@ -211,8 +211,7 @@ import { useState } from "react";
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
 import { RxCross1 } from "react-icons/rx";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import * as db from "../../Database";
+import { useDispatch, useSelector } from "react-redux";
 import { addAssignment, updateAssignment } from "./AssignmentReducer";
 // import { de } from "date-fns/locale";
 
@@ -220,8 +219,10 @@ export default function AssignmentEditor() {
   const { cid, aid } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const assignment = db.assignments.find((a) => a._id === aid);
+  const { assignments } = useSelector((state: any) => state.assignmentReducer);
+  const assignment = assignments.find(
+    (assignment: any) => assignment.course === cid && assignment._id === aid
+  );
 
   const [description, setDescription] = useState(assignment?.description || "");
   const [title, setTitle] = useState(assignment?.title || "");
@@ -230,7 +231,38 @@ export default function AssignmentEditor() {
   const [availableFrom, setAvailableFrom] = useState(assignment?.availableFrom || "");
   const [availableUntil, setAvailableUntil] = useState(assignment?.editorDueDate || "");
 
-  const handleSave: any = (aid: string) => {
+
+  // const handleSave = (): void => {
+  //   if (aid === undefined) {
+  //     const newAssignment = {
+  //       description,
+  //       title,
+  //       course: cid,
+  //       dueDate,
+  //       points: parseInt(points),
+  //       availableFrom,
+  //       availableUntil,
+  //     };
+  //     dispatch(addAssignment(newAssignment));
+  //     navigate(`/Kambaz/Courses/${cid}/Assignments`);
+  //   } else {
+  //     const updatedAssignment = {
+  //       ...assignment,
+  //       description,
+  //       title,
+  //       course: cid,
+  //       dueDate,
+  //       points: parseInt(points),
+  //       availableFrom,
+  //       availableUntil,
+  //     };
+  //     dispatch(editAssignment(updatedAssignment));
+  //     navigate(`/Kambaz/Courses/${cid}/Assignments`);
+  //   }
+  // };
+
+
+  const handleSave= (): void => {
    
     if (!aid) {
       // Add new assignment
@@ -256,7 +288,7 @@ export default function AssignmentEditor() {
         availableUntil,
       }));
     }
-
+  
     navigate(`/Kambaz/Courses/${cid}/Assignments`);
   };
 
@@ -433,7 +465,7 @@ export default function AssignmentEditor() {
                 <Button variant="secondary" id="wd-button-cancel" className="me-3" onClick={() => navigate(`/Kambaz/Courses/${cid}/Assignments`)}> 
                   Cancel
                 </Button>
-                <Button variant="danger" id="wd-button-save" onClick={() => handleSave(aid)}>
+                <Button variant="danger" id="wd-button-save" onClick={() => handleSave()}>
                   Save
                 </Button>
               </Col>

@@ -7,7 +7,7 @@ import AssignmentControll1 from "./AssignmentControlLeft";
 import AssignmentControll2 from "./AssignmentControlButtons";
 //import * as db from "../../Database";
 import { Link, useNavigate, useParams } from "react-router";
-import { editAssignment, deleteAssignment } from "./AssignmentReducer";
+import { deleteAssignment } from "./AssignmentReducer";
 import { useSelector, useDispatch } from "react-redux";
 //import { useState } from "react";
 //import AssignmentControlRedux from "./AssignmentControlRedux";
@@ -102,7 +102,8 @@ export default function Assignments() {
                   deleteAssignment={(assignmentId) => {
                     dispatch(deleteAssignment(assignmentId));
                   }}
-                  editAssignment={(assignmentId) => dispatch(editAssignment(assignmentId))} />
+                  // editAssignment={(assignmentId) => dispatch(editAssignment(assignmentId))} 
+                  />
               </ListGroup.Item>
             ))}
         </ListGroup>

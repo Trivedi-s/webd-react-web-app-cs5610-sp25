@@ -7,14 +7,17 @@ import { useNavigate, useParams } from "react-router";
 import { useSelector } from "react-redux";
 
 export default function AssignmentControlButtons(
-  { assignmentId, deleteAssignment, editAssignment }: { assignmentId: string; deleteAssignment: (assignmentId: string) => void; editAssignment: (assignmentId: string) => void }
+  { assignmentId, deleteAssignment }: { assignmentId: string; deleteAssignment: (assignmentId: string) => void;}
 ) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { cid } = useParams();
   const navigate = useNavigate();
   const isAdminOrFaculty = currentUser.role === "FACULTY" || currentUser.role === "ADMIN";
-  const handleEditAssignment: any = (assignmentId: string) => {
-    editAssignment(assignmentId);
+  // const handleEditAssignment: any = (assignmentId: string) => {
+  //   editAssignment(assignmentId);
+  //   navigate(`/Kambaz/Courses/${cid}/Assignments/${assignmentId}`);
+  // };
+  const handleEditAssignment = () => {
     navigate(`/Kambaz/Courses/${cid}/Assignments/${assignmentId}`);
   };
   const handleDeleteAssignment = (assignmentId: string) => {
@@ -27,7 +30,7 @@ export default function AssignmentControlButtons(
     <div className="float-end d-flex align-items-center gap-2">
       {isAdminOrFaculty && (
         <>
-          <FaPencil onClick={() => handleEditAssignment(assignmentId)} className="text-primary me-3" />
+          <FaPencil onClick={() => handleEditAssignment()} className="text-primary me-3" />
           <FaTrash className="text-danger me-2 mb-1" onClick={() => handleDeleteAssignment(assignmentId)} />
         </>
       )}

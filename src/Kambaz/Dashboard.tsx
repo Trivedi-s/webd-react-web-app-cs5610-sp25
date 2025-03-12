@@ -16,7 +16,7 @@ export default function Dashboard() {
     number: "New Number",
     startDate: "2023-09-10",
     endDate: "2023-12-15",
-    description: "New Description",
+    description: "Description of the course goes here ...",
     image: "images/react.png",
   };
   const isAdminOrFaculty = currentUser.role === "FACULTY" || currentUser.role === "ADMIN";
@@ -94,7 +94,7 @@ export default function Dashboard() {
                         {course.name} </h5>
                       <p className="wd-dashboard-course-title card-text overflow-y-hidden" style={{ maxHeight: 50 }}>
                         {course.description} </p>
-                      <button className="btn btn-primary wd-go-button"> Go </button>
+                      <button className="btn btn-primary wd-go-button me-2"> Go </button>
                       {isAdminOrFaculty &&
                         <>
                           <Button onClick={(event) => {
