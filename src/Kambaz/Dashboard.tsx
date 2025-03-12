@@ -1,141 +1,137 @@
-import { Button, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import * as db from "./Database";
+import { Row, Col, Card, FormControl, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { unenroll, enroll } from "./enrollmentReducer";
+import { addNewCourse, deleteCourse, updateCourse } from "./Courses/reducer"
+import { v4 as uuidv4 } from 'uuid';
+
 export default function Dashboard() {
-const courses = db.courses;
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const { enrollments } = useSelector((state: any) => state.enrollmentReducer);
+  const { courses } = useSelector((state: any) => state.coursesReduccer);
+  const newCourse = {
+    _id: uuidv4(),
+    name: "New Course",
+    number: "New Number",
+    startDate: "2023-09-10",
+    endDate: "2023-12-15",
+    description: "New Description",
+    image: "images/react.png",
+  };
+  const [course, setCourse] = useState(newCourse);
+  const [showAll, setShowAll] = useState(false);
+  const dispatch = useDispatch();
   return (
     <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
-      <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
+      <h1 id="wd-dashboard-title">Dashboard
+        {currentUser.role !== "FACULTY" && <Button className="float-end" onClick={() => setShowAll(!showAll)}>Enrollments</Button>}</h1>
+      <hr />
+      {currentUser.role === "FACULTY" && (
+        <>
+          <h5>New Course
+            <button className="btn btn-primary float-end"
+              id="wd-add-new-course-click"
+              onClick={() => {
+                const updatedCourse = { ...course, _id: uuidv4(), image: "react.png" }
+                setCourse(updatedCourse)
+                dispatch(addNewCourse({ course: updatedCourse }))
+                dispatch(enroll({ user: currentUser, course: updatedCourse }))
+              }}> Add </button>
+            <button className="btn btn-warning float-end me-2"
+              onClick={() => dispatch(updateCourse({ course }))} id="wd-update-course-click">
+              Update
+            </button>
+          </h5>
+          <br />
+          <FormControl
+            value={course.name}
+            className="mb-2"
+            onChange={(e) => setCourse({ ...course, name: e.target.value })}
+          />
+          <FormControl
+            value={course.description}
+            as="textarea"
+            rows={1}
+            onChange={(e) => setCourse({ ...course, description: e.target.value })}
+          />
+          <hr />
+        </>
+      )}
+
+
+      <h2 id="wd-dashboard-published">
+        Published Courses ({
+          showAll
+            ? courses.length
+            : courses.filter((course: any) =>
+              enrollments.some(
+                (enrollment: any) =>
+                  enrollment.user === currentUser._id &&
+                  enrollment.course === course._id
+              )
+            ).length
+        })
+      </h2>
+      <hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
-            {courses.map((course) => (
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-              <Card>
-                <Link to={`/Kambaz/Courses/${course._id}/Home`}
-                className="wd-dashboard-course-link text-decoration-none text-dark" >
-                <Card.Img src = {course.image || "/images/default-course.jpg"} variant="top" width="100%" height={160} />
-                <Card.Body className="card-body">
-                  <Card.Title className="wd-dashboard-course-title text-nowrap overflow-hidden" style={{color: "blue"}}>
-                    {course.name} </Card.Title>
-                  <Card.Text className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
-                    {course.description} </Card.Text>
-                  <Button variant="primary"> Go </Button>
-                </Card.Body>
-                </Link>
-              </Card>
-          </Col>
-        ))}
+          {courses.filter((course: any) =>
+            showAll || enrollments.some(
+              (enrollment: any) =>
+                enrollment.user === currentUser._id &&
+                enrollment.course === course._id
+            ))
+            .map((course: any) => (
+              <Col className="wd-dashboard-course" style={{ width: "300px" }} key={course._id}>
+                <Card>
+                  <Link to={`/Kambaz/Courses/${course._id}/Home`}
+                    className="wd-dashboard-course-link text-decoration-none text-dark" >
+                    <Card.Img variant="top" src={course.image} width="100%" height={160} /><br />
+                    <div className="card-body">
+                      <h5 className="wd-dashboard-course-title card-title overflow-hidden text-nowrap">
+                        {course.name} </h5>
+                      <p className="wd-dashboard-course-title card-text overflow-y-hidden" style={{ maxHeight: 50 }}>
+                        {course.description} </p>
+                      <button className="btn btn-primary wd-go-button"> Go </button>
+                      {currentUser.role === "FACULTY" &&
+                        <>
+                          <Button onClick={(event) => {
+                            event.preventDefault();
+                            dispatch(deleteCourse({ courseId: course._id }));
+                          }} className="btn btn-danger wd-card-delete-button float-end"
+                            id="wd-delete-course-click">
+                            Delete
+                          </Button>
+                          <Button id="wd-edit-course-click"
+                            onClick={(event) => {
+                              event.preventDefault();
+                              setCourse(course)
+                            }}
+                            className="btn btn-warning me-2 wd-card-edit-button float-end" >
+                            Edit
+                          </Button>
+                        </>}
+                      {currentUser.role !== "FACULTY" && (
+                        enrollments.some((enrollment: any) => enrollment.user === currentUser._id && enrollment.course === course._id) ?
+                          <Button className="btn btn-danger wd-card-delete-button" onClick={(e) => {
+                            e.preventDefault();
+                            dispatch(unenroll({ user: currentUser, course: course }))
+                          }
+                          }>Unenroll</Button>
+                          :
+                          <Button className="btn btn-success wd-card-delete-button" onClick={(e) => {
+                            e.preventDefault();
+                            dispatch(enroll({ user: currentUser, course: course }))
+                          }}>Enroll</Button>
+                      )}
+                    </div>
+                  </Link>
+                </Card>
+              </Col>
+            ))}
         </Row>
-            {/* <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-                <Card>
-                    <Link to="/Kambaz/Courses/1234/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                        <Card.Img variant="top" src="/images/react.png" width="100%" height={160}/>
-                        <Card.Body >
-                            <Card.Title className="wd-dashboard-course-title ">CS1234 React JS</Card.Title>
-                            <Card.Text className="wd-dashboard-course-description ">Full Stack software developer</Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Link>
-                </Card>
-            </Col>
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-                <Card>
-                    <Link to="/Kambaz/Courses/5680/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                        <Card.Img variant="top" src="/images/cybersecurity.png" width="100%" height={160}/>
-                        <Card.Body>
-                            <Card.Title className="wd-dashboard-course-title ">CS5680 Cybersecurity</Card.Title>
-                            <Card.Text className="wd-dashboard-course-description ">Cyber Security Course</Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Link>
-                </Card>
-            </Col>
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-                <Card>
-                    <Link to="/Kambaz/Courses/5490/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                        <Card.Img variant="top" src="/images/Robotics.jpeg" width="100%" height={160}/>
-                        <Card.Body>
-                            <Card.Title className="wd-dashboard-course-title ">CS5490 Robotics</Card.Title>
-                            <Card.Text className="wd-dashboard-course-description ">Robotics Fundamental Course</Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Link>
-                </Card>
-            </Col>
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-                <Card>
-                    <Link to="/Kambaz/Courses/5800/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                        <Card.Img variant="top" src="/images/algo.jpeg" width="100%" height={160}/>
-                        <Card.Body>
-                            <Card.Title className="wd-dashboard-course-title ">CS5800 Algorithms</Card.Title>
-                            <Card.Text className="wd-dashboard-course-description ">Algorithm design and analysis</Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Link>
-                </Card>
-            </Col>
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-                <Card>
-                    <Link to="/Kambaz/Courses/5200/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                        <Card.Img variant="top" src="/images/DBMS.jpeg" width="100%" height={160}/>
-                        <Card.Body>
-                            <Card.Title className="wd-dashboard-course-title ">CS5200 DBMS</Card.Title>
-                            <Card.Text className="wd-dashboard-course-description ">DB design and SQL</Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Link>
-                </Card>
-            </Col>
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-                <Card>
-                    <Link to="/Kambaz/Courses/5010/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                        <Card.Img variant="top" src="/images/pdp.png" width="100%" height={160}/>
-                        <Card.Body>
-                            <Card.Title className="wd-dashboard-course-title ">CS5010 PDP</Card.Title>
-                            <Card.Text className="wd-dashboard-course-description ">Master PDP</Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Link>
-                </Card>
-            </Col>
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-                <Card>
-                    <Link to="/Kambaz/Courses/5100/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                        <Card.Img variant="top" src="/images/FAI.jpeg" width="100%" height={160}/>
-                        <Card.Body>
-                            <Card.Title className="wd-dashboard-course-title ">CS5100 Foundations AI</Card.Title>
-                            <Card.Text className="wd-dashboard-course-description ">AI algorithms and concepts</Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Link>
-                </Card>
-            </Col>
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-                <Card>
-                    <Link to="/Kambaz/Courses/5330/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                        <Card.Img variant="top" src="/images/Pattern Recognition.jpeg" width="100%" height={160}/>
-                        <Card.Body>
-                            <Card.Title className="wd-dashboard-course-title ">CS5330 Machine Learning</Card.Title>
-                            <Card.Text className="wd-dashboard-course-description ">Understand ML Concepts</Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Link>
-                </Card>
-            </Col>
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-                <Card>
-                    <Link to="/Kambaz/Courses/6120/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                        <Card.Img variant="top" src="/images/Pattern Recognition.jpeg" width="100%" height={160}/>
-                        <Card.Body>
-                            <Card.Title className="wd-dashboard-course-title ">CS6120 Natural Language Processing</Card.Title>
-                            <Card.Text className="wd-dashboard-course-description ">Understand natural language processing</Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Link>
-                </Card>
-            </Col>
-        </Row>  */}
       </div>
     </div>
-);}
+  );
+}
