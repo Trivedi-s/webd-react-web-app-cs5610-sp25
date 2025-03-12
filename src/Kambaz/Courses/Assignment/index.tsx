@@ -7,7 +7,7 @@ import AssignmentControll1 from "./AssignmentControlLeft";
 import AssignmentControll2 from "./AssignmentControlButtons";
 //import * as db from "../../Database";
 import { Link, useNavigate, useParams } from "react-router";
-import { addAssignment, editAssignment, deleteAssignment } from "./AssignmentReducer";
+import { editAssignment, deleteAssignment } from "./AssignmentReducer";
 import { useSelector, useDispatch } from "react-redux";
 //import { useState } from "react";
 //import AssignmentControlRedux from "./AssignmentControlRedux";
