@@ -61,7 +61,7 @@
 //   ); 
 // }
 
-import { useSelector } from "react-redux";
+import { courses } from "../Database";
 import { ListGroup } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { useParams } from "react-router";
@@ -70,9 +70,7 @@ export default function CourseNavigation() {
   const { cid } = useParams();
   const { pathname } = useLocation();
 
-  const courses = useSelector((state: any) => state.coursesReduccer.courses);
-
-  const course = courses.find((course: any) => course._id === cid);
+  const course = courses.find((course) => course._id === cid);
 
   const links = [
     { label: "Home", path: `/Kambaz/Courses/${cid}/Home` },
