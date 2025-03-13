@@ -68,7 +68,7 @@ import Account from "./Account/Index";
 import Dashboard from "./Dashboard";
 import Courses from "./Courses";
 import KambazNavigation from "./Navigation";
-import "./styles.css"
+import "./style.css"
 
 // import { v4 as uuidv4 } from "uuid";
 import ProtectedRoute from "./Account/ProtectedRoute";
