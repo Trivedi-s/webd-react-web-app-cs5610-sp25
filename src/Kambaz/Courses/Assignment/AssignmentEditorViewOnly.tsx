@@ -1,12 +1,16 @@
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
 import { RxCross1 } from "react-icons/rx";
 import { useNavigate, useParams } from "react-router-dom";
-import * as db from "../../Database";
+// import * as db from "../../Database";
+import { useSelector } from "react-redux";
 
 export default function AssignmentEditorViewOnly() {
   const { cid, aid } = useParams();
   //const courseAssignments = db.assignments.filter((assignment) => assignment.course === cid);
-  const assignment = db.assignments.find((a) => a._id === aid);
+  const { assignments } = useSelector((state: any) => state.assignmentReducer);
+  const assignment = assignments.find(
+    (assignment: any) => assignment.course === cid && assignment._id === aid
+  );
   const navigate = useNavigate();
   const handleNavigation = () => {
     navigate(`/Kambaz/Courses/${cid}/Assignments`);
