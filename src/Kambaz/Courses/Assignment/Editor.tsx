@@ -229,7 +229,7 @@ export default function AssignmentEditor() {
   const [dueDate, setDueDate] = useState(assignment?.dueDate || "");
   const [points, setPoints] = useState(assignment?.points || "");
   const [availableFrom, setAvailableFrom] = useState(assignment?.availableFrom || "");
-  const [availableUntil, setAvailableUntil] = useState(assignment?.editorDueDate || "");
+  const [availableUntil, setAvailableUntil] = useState(assignment?.availableUntil || "");
 
 
   // const handleSave = (): void => {
