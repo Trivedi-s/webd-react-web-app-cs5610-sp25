@@ -51,13 +51,13 @@ export default function TOC() {
             </Nav.Item>
 
             <Nav.Item>
-                <Nav.Link href="https://github.com/Trivedi-s/webd-kambaz-backend" target="_blank" active={false}>
+                <Nav.Link href="https://github.com/Trivedi-s/webd-node-web-app-cs5610-sp25" target="_blank" active={false}>
                     My Node GitHub 
                 </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-                <Nav.Link href="https://webd-kambaz-backend.onrender.com" target="_blank" active={false}>
+                <Nav.Link href="https://webd-node-web-app-cs5610-sp25.onrender.com" target="_blank" active={false}>
                     Render Server
                 </Nav.Link>
             </Nav.Item>
