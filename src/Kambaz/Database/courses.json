@@ -1,7 +1,7 @@
 [
     {
       "_id": "RS101",
-      "title": "Rocket Propulsion",
+      "name": "Rocket Propulsion",
       "number": "RS4550",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -12,7 +12,7 @@
     },
     {
       "_id": "RS102",
-      "title": "Aerodynamics",
+      "name": "Aerodynamics",
       "number": "RS4560",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -23,7 +23,7 @@
     },
     {
       "_id": "RS103",
-      "title": "Spacecraft Design",
+      "name": "Spacecraft Design",
       "number": "RS4570",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -34,7 +34,7 @@
     },
     {
       "_id": "RS104",
-      "title": "Organic Chemistry",
+      "name": "Organic Chemistry",
       "number": "CH1230",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -45,7 +45,7 @@
     },
     {
       "_id": "RS105",
-      "title": "Inorganic Chemistry",
+      "name": "Inorganic Chemistry",
       "number": "CH1240",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -56,7 +56,7 @@
     },
     {
       "_id": "RS106",
-      "title": "Physical Chemistry",
+      "name": "Physical Chemistry",
       "number": "CH1250",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -67,7 +67,7 @@
     },
     {
       "_id": "RS107",
-      "title": "Ancient Languages and Scripts of Middle-earth",
+      "name": "Ancient Languages and Scripts of Middle-earth",
       "number": "ME101",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",
@@ -79,7 +79,7 @@
     },
     {
       "_id": "RS108",
-      "title": "Wizards, Elves, and Men: Inter-species Diplomacy in Middle-earth",
+      "name": "Wizards, Elves, and Men: Inter-species Diplomacy in Middle-earth",
       "number": "ME102",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15",

@@ -26,8 +26,8 @@ export default function AssignmentEditor({
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [points, setPoints] = useState("");
-  const [availableFrom, setAvailableFrom] = useState("");
-  const [availableUntil, setAvailableUntil] = useState("");
+  const [editorAvailableFrom, setAvailableFrom] = useState("");
+  const [editorDueDate, setAvailableUntil] = useState("");
 
   useEffect(() => {
     const loadData = async () => {
@@ -53,8 +53,8 @@ export default function AssignmentEditor({
           setTitle(assignment.title || "");
           setDueDate(assignment.dueDate || "");
           setPoints(assignment.points?.toString() || "");
-          setAvailableFrom(assignment.availableFrom || "");
-          setAvailableUntil(assignment.availableUntil || assignment.editorDueDate || "");
+          setAvailableFrom(assignment.editorAvailableFrom || "");
+          setAvailableUntil(assignment.dueDate || assignment.editorDueDate || "");
         }
       }
     };
@@ -70,8 +70,8 @@ export default function AssignmentEditor({
         course: cid,
         dueDate,
         points: parseInt(points),
-        availableFrom,
-        availableUntil,
+        editorAvailableFrom,
+        editorDueDate,
       };
 
       if (!aid) {
@@ -255,13 +255,13 @@ export default function AssignmentEditor({
                   <Col sm={6}>
                     <Form.Group controlId="wd-available-from">
                       <Form.Label><strong>Available From</strong></Form.Label>
-                      <Form.Control type="date" value={availableFrom} onChange={(e) => setAvailableFrom(e.target.value)} />
+                      <Form.Control type="date" value={editorAvailableFrom} onChange={(e) => setAvailableFrom(e.target.value)} />
                     </Form.Group>
                   </Col>
                   <Col sm={6}>
                     <Form.Group controlId="wd-available-until">
                       <Form.Label><strong>Until</strong></Form.Label>
-                      <Form.Control type="date" value={availableUntil} onChange={(e) => setAvailableUntil(e.target.value)} />
+                      <Form.Control type="date" value={editorDueDate} onChange={(e) => setAvailableUntil(e.target.value)} />
                     </Form.Group>
                   </Col>
                 </Row>

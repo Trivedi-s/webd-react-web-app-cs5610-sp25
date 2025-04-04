@@ -26,10 +26,10 @@ export default function Assignments({
   fetchAssignment
 }: AssignmentProps) {
   console.log("here 1");
-  
+
   const { cid } = useParams();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const loadAssignments = async () => {
       try {
@@ -38,17 +38,17 @@ export default function Assignments({
         console.error("Error fetching assignments:", error);
       }
     };
-    
+
     loadAssignments();
   }, []);
-  
+
   const handleAddAssignment = () => {
     navigate(`/Kambaz/Courses/${cid}/AssignmentEditor`);
   };
-  
+
   return (
     <div id="wd-assignments">
- 
+
       <div className="row justify-content-between">
         <div className="position-relative col-md-8">
           <HiMagnifyingGlass className="position-absolute ms-2" style={{ margin: "0 auto", height: "100%", left: "12px" }} />
@@ -107,14 +107,14 @@ export default function Assignments({
                       </Link>
                       <p className="wd-assignment-details mb-0">
                         <span className="text-danger">{assignment.title}</span> |{" "}
-                        <b>Not Available until</b> {assignment.availableFrom} |
+                        <b>Not Available until</b> {assignment.editorAvailableFrom} |
                         <br />
                         <b>Due </b>{assignment.dueDate} | {assignment.points} pts
                       </p>
                     </div>
                   </div>
                 </div>
-                <AssignmentControll2 
+                <AssignmentControll2
                   assignmentId={assignment._id}
                   deleteAssignment={deleteAssignment}
                   updateAssignment={updateAssignment}
