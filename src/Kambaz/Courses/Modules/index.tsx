@@ -21,7 +21,7 @@ export default function Modules() {
   };
 
   const removeModule = async (moduleId: string) => {
-    if (window.confirm('Do you want to delete this assignment?')) {
+    if (window.confirm('Do you want to delete this module?')) {
       try {
         await modulesClient.deleteModule(moduleId);
         dispatch(deleteModule(moduleId));

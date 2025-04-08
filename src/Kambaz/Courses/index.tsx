@@ -139,6 +139,7 @@ import { useSelector } from "react-redux";
 
 import Settings from "../Settings";
 import * as assignmentClient from "./Assignments/client";
+import Grades from "./Grades";
 
 export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
@@ -207,6 +208,7 @@ export default function Courses({ courses }: { courses: any[]; }) {
                 <Route path="Home" element={<Home />} />
                 <Route path="Modules" element={<Modules />} />
                 <Route path="Piazza" element={<Piazza />} />
+                <Route path="Grades" element={<Grades />} />
                 <Route path="Zoom" element={<Zoom/>} />
                 <Route path="Assignments" element={
                   <Assignments 
@@ -230,6 +232,7 @@ export default function Courses({ courses }: { courses: any[]; }) {
                   />
                 } />
                 <Route path="Quizzes" element={<Quizzes />} />
+                <Route path="Grades" element={<Grades />} />
                 <Route path="People" element={<PeopleTable />} />
                 <Route path="Settings" element={<Settings />} />
                 <Route path="AssignmentEditor" element={
