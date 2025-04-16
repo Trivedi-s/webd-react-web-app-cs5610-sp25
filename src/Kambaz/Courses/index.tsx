@@ -140,6 +140,7 @@ import { useSelector } from "react-redux";
 import Settings from "../Settings";
 import * as assignmentClient from "./Assignments/client";
 import Grades from "./Grades";
+import path from "path";
 
 export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
@@ -190,7 +191,7 @@ export default function Courses({ courses }: { courses: any[]; }) {
     }));
     return updatedAssignment;
   };
-
+ 
   return (
     <div id="wd-courses">
       <h2 className="text-danger">
@@ -231,7 +232,8 @@ export default function Courses({ courses }: { courses: any[]; }) {
                     fetchAssignment={fetchAssignments}
                   />
                 } />
-                <Route path="Quizzes" element={<Quizzes />} />
+               
+                {/* <Route path=":cid/Quizzes" element={<Quizzes />} /> */}
                 <Route path="Grades" element={<Grades />} />
                 <Route path="People" element={<PeopleTable />} />
                 <Route path="Settings" element={<Settings />} />

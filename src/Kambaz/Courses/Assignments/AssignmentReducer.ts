@@ -40,4 +40,3 @@ const assignmentsSlice = createSlice({
 export const { addAssignment, deleteAssignment, updateAssignment, editAssignment } =
   assignmentsSlice.actions;
 export default assignmentsSlice.reducer;
-

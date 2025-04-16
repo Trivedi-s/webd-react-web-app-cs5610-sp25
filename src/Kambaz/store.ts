@@ -4,6 +4,7 @@ import accountReducer from "./Account/reducer";
 import assignmentsReducer from "./Courses/Assignments/AssignmentReducer";
 import coursesReducer from "./Courses/reducer";
 import enrollmentReducer from "./enrollmentReducer";
+import quizReducer from "./Courses/Quizzes/QuizReducer";
 
 
 const store = configureStore({
@@ -12,7 +13,8 @@ const store = configureStore({
     accountReducer,
     assignmentsReducer,
     coursesReducer,
-    enrollmentReducer
+    enrollmentReducer,
+    quizReducer,
   },
 });
 export default store;

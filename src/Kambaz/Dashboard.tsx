@@ -224,7 +224,7 @@ export default function Dashboard({
     startDate: "2023-09-10",
     endDate: "2023-12-15",
     description: "New Description",
-    image: "images/react.png",
+    image: "images/NEU.png",
   };
 
   const [course, setCourse] = useState(newCourse);
@@ -262,7 +262,7 @@ export default function Dashboard({
     );
 
   const handleAddCourse = async () => {
-    const updatedCourse = { ...course, _id: uuidv4(), image: "images/react.png" };
+    const updatedCourse = { ...course, _id: uuidv4(), image: "images/NEU.png" };
     setCourse(updatedCourse);
     const newCourseData = await addNewCourse(updatedCourse);
     dispatch(enroll({ user: currentUser, course: newCourseData || updatedCourse }));
